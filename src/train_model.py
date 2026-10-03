@@ -1,3 +1,4 @@
+
 import pandas as pd
 import joblib
 import os
@@ -27,7 +28,7 @@ print("Model Training Completed!")
 print("Mean Absolute Error:", mean_absolute_error(y_val, predictions))
 print("R2 Score:", r2_score(y_val, predictions))
 
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(10, 6))
 
 plt.scatter(
     y_val,
@@ -36,9 +37,12 @@ plt.scatter(
     label="Predicted Prices"
 )
 
+min_price = min(y_val.min(), predictions.min())
+max_price = max(y_val.max(), predictions.max())
+
 plt.plot(
-    [y_val.min(), y_val.max()],
-    [y_val.min(), y_val.max()],
+    [min_price, max_price],
+    [min_price, max_price],
     color="black",
     linewidth=2,
     label="Perfect Prediction Line"
@@ -50,7 +54,7 @@ plt.title("Actual vs Predicted House Prices")
 plt.legend()
 plt.tight_layout()
 
-plt.savefig("house_price_predictions.png")
+plt.savefig("house_price_predictions.png", dpi=150)
 plt.close()
 
 print("Graph saved successfully!")
