@@ -1,4 +1,3 @@
-
 import pandas as pd
 import joblib
 import os
@@ -44,6 +43,7 @@ plt.plot(
     [min_price, max_price],
     [min_price, max_price],
     color="black",
+    linestyle=":",
     linewidth=2,
     label="Perfect Prediction Line"
 )
@@ -51,6 +51,9 @@ plt.plot(
 plt.xlabel("Actual House Prices")
 plt.ylabel("Predicted House Prices")
 plt.title("Actual vs Predicted House Prices")
+
+plt.grid(True, linestyle="--", alpha=0.5)
+
 plt.legend()
 plt.tight_layout()
 
